@@ -12,6 +12,7 @@ export default function useFetchMovies(page) {
         );
         const data = await res.json();
         setMovies((state) => [...state, ...data?.results]);
+        console.log(data.results);
       } catch (error) {
         setIsError(true);
       }

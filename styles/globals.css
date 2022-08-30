@@ -19,6 +19,21 @@ a {
   box-sizing: border-box;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 173, 181, 0.71);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 173, 181, 0.71);
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
