@@ -49,7 +49,7 @@ export default function Home() {
               title={movie.title}
               overview={movie.overview}
               image={movie.poster_path}
-              navigate={`/detail/${movie.id}`}
+              navigate={movie.id}
             />
           );
         })}

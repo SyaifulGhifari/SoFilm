@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 export default function MoviveCard({ title, image, navigate }) {
   const router = useRouter();
   const handleClickCard = (e) => {
-    router.push(navigate);
+    router.push(`/detail/${navigate}`);
   };
 
   return (
@@ -12,9 +12,9 @@ export default function MoviveCard({ title, image, navigate }) {
           onClick={handleClickCard}
           src={`https://image.tmdb.org/t/p/w500${image}`}
           alt='film'
-          className='group-hover:blur-sm'
+          className='group-hover:blur-sm group-hover:brightness-90 cursor-pointer'
         />
-        <div className='invisible transition duration-500 group-hover:ease-in transform hover:-translate-y-3 :scale-110 font-semibold absolute top-1/2 text-center w-full group-hover:block'>
+        <div className='opacity-0 group-hover:opacity-100 duration-500 group-hover:top-1/2 group-hover:ease-in transform grou-hover:-translate-y-3 group-hover:scale-110 font-bold absolute top-80 text-center w-full'>
           {title}{' '}
         </div>
       </div>

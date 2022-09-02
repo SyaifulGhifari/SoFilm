@@ -7,7 +7,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ijo: 'rgba(0, 173, 181, 0.71)',
+        ijo: 'rgba(0, 173, 181, 0.90)',
+        item: 'rgba(0, 0, 0, 0.65)',
+      },
+      spacing: {
+        poster: '35rem',
       },
     },
   },
