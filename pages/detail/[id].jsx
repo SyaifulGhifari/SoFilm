@@ -1,6 +1,7 @@
 import useFetchDetailMovie from '../../hooks/useFetchDetailMovie';
 import { useRouter } from 'next/router';
 import Navbar from '../../components/navbar';
+import Link from 'next/link';
 export default function DetailMovie() {
   const router = useRouter();
   const { id } = router.query;
@@ -13,9 +14,11 @@ export default function DetailMovie() {
   };
   const duration = timeConvert(movie.runtime);
 
-  // let genre = movie.genres.map((genre) => genre.name);
+  let genre = movie?.genres?.map((genre) => genre.name);
 
-  // console.log(genre);
+  const handleClickFavorite = (e) => {
+    alert('Add Favorite Film Success');
+  };
 
   return (
     <>
@@ -42,14 +45,21 @@ export default function DetailMovie() {
               <div className='font-semibold text-2xl md:text-5xl mb-5'>
                 {movie.original_title}
               </div>
-              <span className=''>{duration}</span>
+              <span className=''>
+                {duration} | {genre !== '' ? genre?.join(' • ') : ''}
+              </span>
               <div className='mt-3'> {movie.overview} </div>
-              <button className='bg-red-300 md:absolute bottom-0 left-5'>
-                Home
-              </button>
-              <button className='bg-red-300 md:absolute ml-3 bottom-0 left-20'>
-                Add Favorite
-              </button>
+              <div className='my-10'>
+                <button className='px-3 py-1 ml-5 bg-ijo hover:bg-ijoactive text-center rounded-md md:absolute bottom-3 left-5'>
+                  <Link href='/'>Home</Link>
+                </button>
+                <button
+                  onClick={handleClickFavorite}
+                  className='bg-ijo ml-5 hover:bg-ijoactive px-3 py-1 text-center md:absolute rounded-md bottom-3 left-40'
+                >
+                  Add Favorite
+                </button>
+              </div>
             </div>
           </div>
         </div>
