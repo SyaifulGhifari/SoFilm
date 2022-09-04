@@ -1,14 +1,32 @@
 import { RiMovie2Line } from 'react-icons/ri';
 import { useRouter } from 'next/router';
+import { useTheme } from 'next-themes';
+import { RiMoonFill, RiSunFill } from 'react-icons/ri';
 
 export default function Navbar() {
+  const { systemTheme, theme, setTheme } = useTheme();
+
+  const renderThemeChanger = () => {
+    const currentTheme = theme === 'system' ? systemTheme : theme;
+
+    if (currentTheme === 'dark') {
+      return (
+        <RiSunFill
+          className='text-white'
+          role='button'
+          onClick={() => setTheme('light')}
+        />
+      );
+    } else {
+      return <RiMoonFill onClick={() => setTheme('dark')} />;
+    }
+  };
+
   const router = useRouter();
 
   const handleClickLogo = () => {
     router.push('/');
   };
-
-  const darkMode = (e) => {};
 
   const handleClickMyFavorite = () => {
     router.push('/myFavorite');
@@ -23,13 +41,8 @@ export default function Navbar() {
         <span className='text-slate-200'>So</span>
         <span>Film</span>
       </div>
-      <div
-        className='flex text-4xl font-semibold text-slate-900 cursor-pointer'
-        onClick={darkMode}
-      >
-        <RiMovie2Line className='text-4xl' />
-        <span className='text-slate-200'>So</span>
-        <span>Film</span>
+      <div className='flex text-4xl font-semibold text-slate-900 cursor-pointer'>
+        {renderThemeChanger()}
       </div>
       <div
         className='flex text-4xl font-semibold text-slate-900 cursor-pointer'

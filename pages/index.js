@@ -25,7 +25,6 @@ export default function Home() {
 
   return (
     <div
-      className='bg-slate-100'
       style={{
         height: '100vh',
         width: '100%',
